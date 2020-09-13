@@ -1,0 +1,52 @@
+Git:
+	alias 	-> git config alias.<代稱> <實際指令>
+	log 	-> git shortlog	 依照使用者來區分 log
+	diff 	-> git diff <HEAD/ID> 比較指定 commit 的差異
+	re 		-> git rm <要刪除檔案> 可以省略要 add 指令 （shell 就必須要使用 add）
+
+	stash 	-> 暫存檔案，gitk 上面會有 stash 標示
+	stash list	-> git stash list 查看當前暫存內容
+	stash apply -> 套用暫存，git stash apply stash@{0}
+	stash pop	-> 套用暫存 ＆ 刪除暫存
+	stash drop  -> 刪除暫存，git stash drop stash@{0}
+
+	pull/pull --rebase -> rebase 不會產生 Merge History
+
+	checkout -> git checkout <指定檔案> 可拉出指定檔案
+	checkout -> 若是目前分支還未提交，則無法切換分支(可使用 stash 先存起來 or 拋棄 reset --hard HEAD)
+
+
+	blame	-> git blame <指定檔案> 指令追朔，找尋修改紀錄，Android 行數點擊右鍵 Annotate 也有相同功能
+
+	commit 	-> id 是由 40 位 16 進制的 SHA-1 hash code 來標示唯一 ID
+
+	merge vs. rebase
+		merge:								|	rebase:
+		保存原來 commit ID					|	產生新 commit ID
+		發生 conflict 時在 Merge Patch 解決	|	Rebase 的過程中，每次 cherry-pick 都可能會發生衝突
+		commit tree 會有兩個 parents			|	commit 路徑單純，容易 trace code 或回到指定版本
+		log 順序不一							|	正確順序
+		產生 Merge Patch						|	分支乾淨
+
+	branch -d -> 刪除分支 （未 Merge 會不能刪除）
+		   -D -> "強制" 刪除分支
+
+
+	tag	<><>-> git tag <tag Name> <commit id>
+	tag		-> 查看 tag
+	tag -a -m 
+	tag -d  -> 刪除 tag
+
+	push --tags
+	push <指定 tags>
+
+
+	branch vs. tag
+		branch:								|	tag:
+		可以不斷改變							|   不可再改變
+		多地方使用							|   通常使用在 master
+
+
+	.git 目錄 ->	config 文件	->	git config /remote 等等資訊的設定
+				index 文件	->	開發者所 commit 的資訊 （16 進位儲存）
+				ref/tags 	->  儲存 tags
