@@ -34,19 +34,19 @@ Git:
 
 	tag	<><>-> git tag <tag Name> <commit id>
 	tag		-> 查看 tag
-	tag -a -m 
+	tag -a -m -> git tag -a -m <tag Name> <commit id>
 	tag -d  -> 刪除 tag
 
 	push --tags
-	push <指定 tags>
+	push <指定 tags 名稱>
 
 
 	branch vs. tag
 		branch:								|	tag:
-		可以不斷改變							|   不可再改變
+		可以不斷改變						|   不可再改變
 		多地方使用							|   通常使用在 master
 
 
 	.git 目錄 ->	config 文件	->	git config /remote 等等資訊的設定
 				index 文件	->	開發者所 commit 的資訊 （16 進位儲存）
-				ref/tags 	->  儲存 tags
+				refs/tags 	->  儲存 tags
